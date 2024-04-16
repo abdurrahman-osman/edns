@@ -9,6 +9,7 @@ type HostEntry struct {
 	ID       int
 	IP       string
 	Hostname string
+	Line int
 }
 
 type ByIP []HostEntry

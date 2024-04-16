@@ -25,6 +25,7 @@ func readHostsFile() []models.HostEntry {
 
 	// Counter to track line numbers
 	lineNumber := 1
+	ID := 1
 
 	// Iterate through each line of the file
 	for scanner.Scan() {
@@ -46,14 +47,16 @@ func readHostsFile() []models.HostEntry {
 		// Create a HostEntry struct for each IP and hostname pair
 		for _, hostname := range hostnames {
 			entry := models.HostEntry{
-				ID:       lineNumber,
+				ID:       ID,
 				IP:       ip,
 				Hostname: hostname,
+				Line:     lineNumber,
 			}
 			hosts = append(hosts, entry)
 		}
 
 		lineNumber++
+		ID++
 	}
 
 	return hosts
